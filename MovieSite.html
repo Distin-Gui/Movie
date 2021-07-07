@@ -18,11 +18,11 @@
 		<div class = "search"> 	</br>
 								<p class="p">Search 
 								</br><input class = "s" type="text" value = "" id = "titles"> 
-								<input class = "b" type="submit" name="Search" onclick="getMovie(titles.value)"></p>
+								<input class = "b" type="submit" name="Search" onclick="getMovies(titles.value)"></p>
 
 	<div class = "contain" >
 		<p>Quality:</p>
-			<select name="quality">
+			<select name="quality" id = "q">
 				<option value="all">All</option>
 				<option value="720p">720p</option>
 				<option value="1080p">1080p</option>
@@ -32,7 +32,7 @@
 														</div>
 	<div class = "contain">
 		<p>Genre:</p>
-			<select name="genre">
+			<select name="genre" id = "g">
 				<option value="all">All</option>
 				<option value="action">Action</option>
 				<option value="adventure">Adventure</option>
@@ -64,7 +64,7 @@
 																</div>
 	<div class = "contain" >
 		<p>Year:</p>
-			<select name="year">
+			<select name="year" id = "y">
 				<option value="0">All</option>
 				<option value="2021">2021</option>
 				<option value="2020">2020</option>
@@ -80,7 +80,7 @@
 																	</div>
 	<div class = "contain" >
 		<p>Rating:</p>
-				<select name="rating">
+				<select name="rating" id= "r">
 				<option value="0">All</option>
 				<option value="9">9+</option>
 				<option value="8">8+</option>
@@ -95,7 +95,7 @@
 													</div>
 	<div class = "contain">
 		<p>Language:</p>
-			<select name="language">
+			<select name="language" id = "l">
 				<option value="en">English</option>
 				<option value="foreign">Foreign</option>
 				<option value="all" selected="selected">--------All--------</option>
@@ -184,7 +184,7 @@
 																</div>
 	<div class = "contain" >
 		<p>Order By:</p>
-					<select name="order_by">
+					<select name="order_by" >
 					<option value="latest" selected="selected">Latest</option>
 					<option value="oldest">Oldest</option>
 					<option value="year">Year</option>
@@ -195,9 +195,10 @@
 																</select>
 																		</div>
 </div>
-<div class = "displays"> 
-					<div id="movies" class = "images"></div>
-							</div>
+<div class = "contain " > 
+			<div class="displays" id = "movies"> </div> </div>
+<div class = "contain " > 
+			<div class="displays" id = "movie"> </div> </div>
 
 	</body>
 </html>

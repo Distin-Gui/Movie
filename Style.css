@@ -65,7 +65,7 @@ a:hover {
 	
 }
 .displays{
-  display: inline-block;
+    position: static;
 		padding: 10px;
 		top:  10px;
 		Left: 190px;
@@ -97,13 +97,19 @@ select{
 
 .images{
     display: inline-block;
+    position: static;
+    left: 40px;
 		text-align: center;
 		font-size: 18px;
 		font-weight: bolder;
 
 }
 .i{
-  display: inline-block;
-	height: 200px;
+	height: 240px;
 		width: 100%;
+}
+table ,td{
+  padding: 5px;
+width = 100% ;
+text-align =  left;
 }
