@@ -6,6 +6,10 @@
 	<body >
 		<script type="text/javascript" src = "Script.js"></script>
 		<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"> </script>
+		    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  					integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  					crossorigin="anonymous"></script>
+		
 		<div class="bar">
 			<ul >
   				<li  ><a href="MovieSite.html">Home</a></li>
@@ -13,10 +17,10 @@
 																	</div>
 		<div class = "search"> 	</br>
 								<p class="p">Search 
-								</br><input class = "s" type="text" value = "search" id = "titles"> 
+								</br><input class = "s" type="text" value = "" id = "titles"> 
 								<input class = "b" type="submit" name="Search" onclick="getMovie(titles.value)"></p>
 
-	<div class = "contain">
+	<div class = "contain" >
 		<p>Quality:</p>
 			<select name="quality">
 				<option value="all">All</option>
@@ -58,7 +62,7 @@
 				<option value="western">Western</option>
 														</select>
 																</div>
-	<div class = "contain">
+	<div class = "contain" >
 		<p>Year:</p>
 			<select name="year">
 				<option value="0">All</option>
@@ -74,7 +78,7 @@
 				<option value="1900-1969">1900-1969</option>
 															</select>
 																	</div>
-	<div class = "contain">
+	<div class = "contain" >
 		<p>Rating:</p>
 				<select name="rating">
 				<option value="0">All</option>
@@ -178,7 +182,7 @@
 				<option value="os">Ossetic (1)</option>
 														</select>
 																</div>
-	<div class = "contain">
+	<div class = "contain" >
 		<p>Order By:</p>
 					<select name="order_by">
 					<option value="latest" selected="selected">Latest</option>
@@ -191,7 +195,9 @@
 																</select>
 																		</div>
 </div>
-
+<div class = "displays"> 
+					<div id="movies" class = "images"></div>
+							</div>
 
 	</body>
 </html>

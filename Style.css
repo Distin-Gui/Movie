@@ -45,6 +45,7 @@ a:hover {
 	background: #262626;
 	border-color: #262626;
 	border-radius: 10px;
+	color: white;
 }
 .p{
 	font-size: 30px;
@@ -52,18 +53,27 @@ a:hover {
 
 }
 .contain{
-		Left: 190px;
-		width: 160px;
-		position: relative;
-		display: table-cell;
+    display: inline-block;
+    top: -30px;
+    left: -10px;
+    padding: 10px;
+    position: relative;
 		text-align: left;
 		font-size: 18px;
 		font-weight: bolder;
-		background-color: #1a1a1a;
-
-		
-		
+	
+	
 }
+.displays{
+  display: inline-block;
+		padding: 10px;
+		top:  10px;
+		Left: 190px;
+		width: 160px;
+
+	
+}
+
 select{
 	color:white ;
 	width: 150px;
@@ -85,3 +95,15 @@ select{
 	font-family: Arial;
 }
 
+.images{
+    display: inline-block;
+		text-align: center;
+		font-size: 18px;
+		font-weight: bolder;
+
+}
+.i{
+  display: inline-block;
+	height: 200px;
+		width: 100%;
+}
