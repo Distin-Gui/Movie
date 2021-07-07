@@ -23,7 +23,7 @@ function getMovies(searchText){
       	axios.get('https://www.omdbapi.com?apikey=a695814a&i='+movie.imdbID).then(r => {
     	console.log(r.data);
     	let t = r.data;
-        if( t.Released == yo){
+        if( t.Released = yo){
 
         	output += `
 
@@ -33,17 +33,16 @@ function getMovies(searchText){
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
         }
-        if( t.Genre == go ){
+        if( t.Genre = go ){
         	output += `
 
             <div class="images">
-              <img class = "i" src="${t.Poster}">
-              <h5>${t.Title}</h5>
-              <a onclick="movieSelected('${t.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+              <img class = "i" src="${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
         }
         if( t.imdbRating >= ro ){
-
         	output += `
 
             <div class="images">
