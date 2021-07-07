@@ -1,6 +1,63 @@
-function getMovies(searchText){
 
-	axios.get('https://www.omdbapi.com?apikey=a695814a&s='+searchText).then(resp => {
+function getMovies(searchText){
+	var years = document.getElementById("y").value;
+	document.write(years);
+	var yo = years.options[years.selectedIndex].text;
+
+	let geners = document.getElementById('g');
+	var go = geners.options[geners.selectedIndex].text;
+
+	var languages = document.getElementById('l');
+	var lo = languages.options[languages.selectedIndex].text;
+
+	var ratings = document.getElementById('r');
+	var ro = ratings.options[ratings.selectedIndex].text;
+
+	if( yo !== "All" || go !== "All" || lo !== "All" || ro !== "All"){
+		axios.get('https://www.omdbapi.com?apikey=a695814a&s='+searchText).then(resp => {
+    	console.log(resp.data);
+    	let m = resp.data.Search;
+		let output = '';
+
+      $.each(m, (index, movie) => {
+        if( movie.Years == yo){
+        	output += `
+
+            <div class="images">
+              <img class = "i" src="${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+              	</div>`;
+        }
+        if( movie.Gener == go ){
+        	output += `
+
+            <div class="images">
+              <img class = "i" src="${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+              	</div>`;
+        }
+        if( movie.Rating == ro ){
+        	output += `
+
+            <div class="images">
+              <img class = "i" src="${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+              	</div>`;
+        }
+              
+      });
+
+      $('#movies').html(output);
+      })
+	.catch(err => {
+		console.log();
+	});	
+	}
+	else{
+		axios.get('https://www.omdbapi.com?apikey=a695814a&s='+searchText).then(resp => {
     	console.log(resp.data);
     	let m = resp.data.Search;
 		let output = '';
@@ -20,7 +77,8 @@ function getMovies(searchText){
       })
 	.catch(err => {
 		console.log();
-	});
+	});	
+	}
 
 	
 }
@@ -52,13 +110,13 @@ function movieSelected(id){
     							<td><strong>Released:</strong> ${movie.Released}</td>
   												</tr>
   							<tr>
-    							<td>strong>Rated:</strong> ${movie.Rated}</td>
+    							<td><strong>Rated:</strong> ${movie.Rated}</td>
   												</tr> 
   							<tr>
     							<td><strong>IMDB Rating:</strong> ${movie.imdbRating}</td>
   												</tr>
   							<tr>
-    							<td>strong>Director:</strong> ${movie.Director}</td>
+    							<td><strong>Director:</strong> ${movie.Director}</td>
   												</tr>
   							<tr>
     							<td><strong>Writer:</strong> ${movie.Writer}</td>
