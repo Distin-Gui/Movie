@@ -1,19 +1,19 @@
 
 function getMovies(searchText){
-	var years = document.getElementById("y").value;
-	document.write(years);
-	var yo = years.options[years.selectedIndex].text;
+	var years = document.getElementById("y");
+	
+	var yo = years.value;
 
 	let geners = document.getElementById('g');
-	var go = geners.options[geners.selectedIndex].text;
+	var go = geners.value;
 
 	var languages = document.getElementById('l');
-	var lo = languages.options[languages.selectedIndex].text;
+	var lo = languages.value;
 
 	var ratings = document.getElementById('r');
-	var ro = ratings.options[ratings.selectedIndex].text;
-
-	if( yo !== "All" || go !== "All" || lo !== "All" || ro !== "All"){
+	var ro = ratings.value;
+	
+	if( yo != 0|| go != "all" || lo != "all" || ro != 0){
 		axios.get('https://www.omdbapi.com?apikey=a695814a&s='+searchText).then(resp => {
     	console.log(resp.data);
     	let m = resp.data.Search;
@@ -38,7 +38,7 @@ function getMovies(searchText){
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
         }
-        if( movie.Rating == ro ){
+        if( movie.Rating >= ro ){
         	output += `
 
             <div class="images">
