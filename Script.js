@@ -22,11 +22,10 @@ function getMovies(searchText){
       $.each(m, (index, movie) => {
       	axios.get('https://www.omdbapi.com?apikey=a695814a&i='+movie.imdbID).then(r => {
     	console.log(r.data);
+    	var ys = yo.split("");
     	let t = r.data;
-    	const a = t.Released.split("");
-    	var len = a.length-1;
-        if( a[len] = yo){
-
+    	for( var i = ys[0]; i < ys[ys.length-1]; i++){
+        if( t.Year = i){
         	output += `
 
             <div class="images">
@@ -34,7 +33,8 @@ function getMovies(searchText){
               <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
-        }
+				        }
+				    }
         const ge = t.Genre.split("");
         var l = ge.length;
         for( var i = 0; i < l;i++){
@@ -46,8 +46,10 @@ function getMovies(searchText){
               <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
-        }
-    }
+
+
+				        }
+				    }
         if( t.imdbRating >= ro ){
         	output += `
 
@@ -56,11 +58,13 @@ function getMovies(searchText){
               <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
-        }
-             }); 
-      });
 
-      $('#movies').html(output);
+        				}
+
+             });
+
+      });
+        $('#movies').html(output);
       })
 	.catch(err => {
 		console.log();
@@ -80,9 +84,10 @@ function getMovies(searchText){
               <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</div>`;
+
+      
               
       });
-
       $('#movies').html(output);
       })
 	.catch(err => {
@@ -131,7 +136,7 @@ function movieSelected(id){
   							<tr>
     							<td><strong>Writer:</strong> ${movie.Writer}</td>
   												</tr>
-  												
+
   							<tr>
     							<td><strong>Actors:</strong> ${movie.Actors}</td>
   												</tr>							  												  												 																	
