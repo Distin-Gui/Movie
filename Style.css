@@ -64,15 +64,6 @@ a:hover {
 	
 	
 }
-.displays{
-    position: static;
-		padding: 10px;
-		top:  10px;
-		Left: 190px;
-		width: 160px;
-
-	
-}
 
 select{
 	color:white ;
@@ -95,21 +86,16 @@ select{
 	font-family: Arial;
 }
 
-.images{
-    display: inline-block;
-    position: static;
-    left: 40px;
-		text-align: center;
-		font-size: 18px;
-		font-weight: bolder;
 
-}
 .i{
-	height: 240px;
-		width: 100%;
+	 height: 100%;
+		width: 200px;
 }
 table ,td{
-  padding: 5px;
-width = 100% ;
-text-align =  left;
+text-align :  center;
 }
+td{
+  padding: -5px;
+  height: 240px;
+}
+

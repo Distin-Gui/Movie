@@ -14,57 +14,40 @@ function getMovies(searchText){
 	var ro = ratings.value;
 	
 	if( yo != 0|| go != "all" || lo != "all" || ro != 0){
+
+
 		axios.get('https://www.omdbapi.com?apikey=a695814a&s='+searchText).then(resp => {
     	console.log(resp.data);
     	let m = resp.data.Search;
-		let output = '';
+      	let output = '';
 
       $.each(m, (index, movie) => {
-      	axios.get('https://www.omdbapi.com?apikey=a695814a&i='+movie.imdbID).then(r => {
-    	console.log(r.data);
-    	var ys = yo.split("");
-    	let t = r.data;
-    	for( var i = ys[0]; i < ys[ys.length-1]; i++){
-        if( t.Year = i){
-        	output += `
 
-            <div class="images">
-              <img class = "i" src="${movie.Poster}">
-              <h5>${movie.Title}</h5>
-              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
-              	</div>`;
-				        }
-				    }
-        const ge = t.Genre.split("");
-        var l = ge.length;
-        for( var i = 0; i < l;i++){
-        if( ge[i] = go ){
-        	output += `
+    		
+			axios.get('http://www.omdbapi.com?apikey=a695814a&i='+movie.imdbID)
+    				.then((response) => {
+			      	let t = response.data;
+			      	let outputs = '';
+        		  	const ge = t.Genre.split(",");
+        		  	        		  		
+        		  	for( var i = 0 ;  i < ge.length ; i++){
 
-            <div class="images">
-              <img class = "i" src="${movie.Poster}">
-              <h5>${movie.Title}</h5>
-              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
-              	</div>`;
+        		  		if( ge[i].toLowerCase() == go ){
+        		  			output += `
+			            <td>
+			              <img class = "i" src="${movie.Poster}">
+			              <h5>${movie.Title}</h5>
+			              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+			              	</td>`;
+			              	break;
 
-
-				        }
-				    }
-        if( t.imdbRating >= ro ){
-        	output += `
-
-            <div class="images">
-              <img class = "i" src="${movie.Poster}">
-              <h5>${movie.Title}</h5>
-              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
-              	</div>`;
-
-        				}
-
+        		  		}
+        		  	}
+        		  	document.write(output);
+        			});
+        			
              });
-
-      });
-        $('#movies').html(output);
+ $('#movies').html(output);         
       })
 	.catch(err => {
 		console.log();
@@ -74,21 +57,37 @@ function getMovies(searchText){
 		axios.get('https://www.omdbapi.com?apikey=a695814a&s='+searchText).then(resp => {
     	console.log(resp.data);
     	let m = resp.data.Search;
-		let output = '';
-
+    	let output = '';
+    	let result = '';
+    	var track = 5;
       $.each(m, (index, movie) => {
-        output += `
-
-            <div class="images">
-              <img class = "i" src="${movie.Poster}">
-              <h5>${movie.Title}</h5>
+      	if( index == track){
+      		output += `
+            <td> 
+            <table>
+            <tr><td>
+              <img class = "i" src="${movie.Poster}"> <td> </tr>
+             <tr><td> <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
-              	</div>`;
+              	</td> </tr> </table> </td>`;
+      		result += `<tr>`+output+`</tr>`;
+      		track += index-1;
+      		output = '';
+      	}
+      	else{
+        output += `
+            <td> 
+            <table>
+            <tr><td>
+              <img class = "i" src="${movie.Poster}"> <td> </tr>
+             <tr><td> <h5>${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+              	</td> </tr> </table> </td>`;
+              }
 
-      
-              
+
       });
-      $('#movies').html(output);
+      $('#movies').html(result);
       })
 	.catch(err => {
 		console.log();
