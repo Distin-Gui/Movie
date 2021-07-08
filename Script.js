@@ -20,34 +20,82 @@ function getMovies(searchText){
     	console.log(resp.data);
     	let m = resp.data.Search;
       	let output = '';
-
       $.each(m, (index, movie) => {
+      			var count = 0;
+			    if( yo != 0 ){ 
+		      	    	var ys = yo.split("-");
+		    	
+				    	for( var i = ys[0]; i <= ys[ys.length-1]; i++ ){
+				        if( movie.Year == i){
 
-    		
-			axios.get('http://www.omdbapi.com?apikey=a695814a&i='+movie.imdbID)
-    				.then((response) => {
-			      	let t = response.data;
-			      	let outputs = '';
-        		  	const ge = t.Genre.split(",");
-        		  	        		  		
-        		  	for( var i = 0 ;  i < ge.length ; i++){
+				        	output += `
+							            <td class = "td"> 
+							            <table class = "table">
+							            <tr class = "tr" ><td class = "td">
+							              <img class = "i" src="${movie.Poster}"> <td> </tr>
+							             <tr class = "tr"><td class = "td"> <h5>${movie.Title}</h5>
+							              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+							              	</td> </tr> </table> </td>`;
+				              	count =	1;
+				              	break;
+				              	
+								        }
+						else{
+							count = -1;
+						}
 
-        		  		if( ge[i].toLowerCase() == go ){
-        		  			output += `
-			            <td>
-			              <img class = "i" src="${movie.Poster}">
-			              <h5>${movie.Title}</h5>
-			              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
-			              	</td>`;
-			              	break;
+								    }
+		
+				}
+				 axios.get('http://www.omdbapi.com?apikey=a695814a&i='+movie.imdbID)
+    			.then((response) => {
+			    let t = response.data;
+			    if( go != "all"){
+	        		  	const ge = t.Genre.split(",");
+	        		  	        		
+	        		  	for( var i = 0 ;  i < ge.length ; i++){
 
-        		  		}
-        		  	}
-        		  	document.write(output);
+	        		  		if( ge[i].toLowerCase() == go &&  count == 0 ){
+	        		  			output += `
+					            <td class = "td"> 
+					            <table class = "table">
+					            <tr class = "tr"><td class = "td">
+					              <img class = "i" src="${movie.Poster}"> <td> </tr>
+					             <tr class = "tr"><td class = "td"> <h5>${movie.Title}</h5>
+					              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+					              	</td> </tr> </table> </td>`;
+				              	count = 2;
+				              	break;
+	        		  			}
+	        		  			else if (ge[i].toLowerCase() == go &&  count == 1){
+								count = 2;
+				              	break;
+	        		  			}
+	        		  		else{
+	        		  			count = -1;
+	        		  			}
+	        		  		}
+        		  	
+        			}
+        		 if( t.imdbRating >= ro  ){
+        		 	if( count == 0 ){
+        				output += `
+				            <td class = "td"> 
+				            <table class = "table">
+				            <tr class = "tr"><td class = "td">
+				              <img class = "i" src="${movie.Poster}"> <td> </tr>
+				             <tr class = "tr"><td class = "td"> <h5>${movie.Title}</h5>
+				              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
+				              	</td> </tr> </table> </td>`;
+							              }
+					else if ( count == 2 || count == 1){
+        				}
+					}
+        		   $('#movies').html(output);
         			});
         			
              });
- $('#movies').html(output);         
+         
       })
 	.catch(err => {
 		console.log();
@@ -63,11 +111,11 @@ function getMovies(searchText){
       $.each(m, (index, movie) => {
       	if( index == track){
       		output += `
-            <td> 
-            <table>
-            <tr><td>
+            <td class = "td"> 
+            <table class = "table">
+            <tr><td class = "td">
               <img class = "i" src="${movie.Poster}"> <td> </tr>
-             <tr><td> <h5>${movie.Title}</h5>
+             <tr><td class = "td"> <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</td> </tr> </table> </td>`;
       		result += `<tr>`+output+`</tr>`;
@@ -76,11 +124,11 @@ function getMovies(searchText){
       	}
       	else{
         output += `
-            <td> 
-            <table>
-            <tr><td>
+            <td class = "td"> 
+            <table class = "table">
+            <tr><td class = "td">
               <img class = "i" src="${movie.Poster}"> <td> </tr>
-             <tr><td> <h5>${movie.Title}</h5>
+             <tr><td class = "td"> <h5>${movie.Title}</h5>
               <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="MovieDetails.html">Movie Details</a>
               	</td> </tr> </table> </td>`;
               }

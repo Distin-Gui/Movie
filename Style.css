@@ -88,14 +88,25 @@ select{
 
 
 .i{
-	 height: 100%;
-		width: 200px;
+	height: 240px;
+		width: 170px;
 }
 table ,td{
-text-align :  center;
-}
-td{
-  padding: -5px;
-  height: 240px;
+  padding: 5px;
+width : 100% ;
+text-align :  left;
 }
 
+
+.table ,.td{
+	width : 170px ;
+text-align :  center;
+}
+.td{
+  padding: -20px;
+  height: 240px;
+}
+.tr{
+	padding: -20px;
+  height: 240px;
+}
