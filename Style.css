@@ -85,6 +85,16 @@ select{
 	font-weight: bolder;
 	font-family: Arial;
 }
+.n{
+	background-color:#b3b3b3;
+	border-color: #b3b3b3;
+	color: black;
+	width: 70px;
+	height: 30px;
+	border-radius: 10px;
+	font-weight: bolder;
+	font-family: Arial;
+}
 
 
 .i{
@@ -99,6 +109,7 @@ text-align :  left;
 
 
 .table ,.td{
+	
 	width : 170px ;
 text-align :  center;
 }
@@ -109,4 +120,9 @@ text-align :  center;
 .tr{
 	padding: -20px;
   height: 240px;
+}
+.not{
+			text-align :  center;
+			color:#808080;
+
 }

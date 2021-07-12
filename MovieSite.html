@@ -3,13 +3,7 @@
 			<link rel="stylesheet" href="style.css">
 													</head>
 
-	<body >
-		<script type="text/javascript" src = "Script.js"></script>
-		<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"> </script>
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-  					integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  					crossorigin="anonymous"></script>
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<body onload="display()" >
 		
 		<div class="bar">
 			<ul >
@@ -19,7 +13,7 @@
 		<div class = "search"> 	</br>
 								<p class="p">Search 
 								</br><input class = "s" type="text" value = "" id = "titles"> 
-								<input class = "b" type="submit" name="Search" onclick="getMovies(titles.value)" id = "submit" ></p>
+								<input class = "b" type="submit" name="Search" onclick="getMovies(titles.value),buttons(),display()" id = "submit" ></p>
 
 	<div class = "contain">
 		<p>Genre:</p>
@@ -141,10 +135,17 @@
 </div>
 <table id = "movies"> 
 			</table>
-<div class = "contain " > 
-			<div class="displays" id = "movie"> </div> </div>
+<div style="text-align: center; " id = "button" hidden>
+<input type="submit" class="n" value="Back" onclick="next(titles.value)">
+<input type="submit" class="n" value="Next" onclick="next(titles.value)">
 
-
+</div>
+<script type="text/javascript" src = "Script.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"> </script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  					integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  					crossorigin="anonymous"></script>
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	</body>
 </html>
