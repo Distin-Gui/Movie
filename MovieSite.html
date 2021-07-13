@@ -13,7 +13,7 @@
 		<div class = "search"> 	</br>
 								<p class="p">Search 
 								</br><input class = "s" type="text" value = "" id = "titles"> 
-								<input class = "b" type="submit" name="Search" onclick="getMovies(titles.value),buttons(),display()" id = "submit" ></p>
+								<input class = "b" type="submit" name="Search" onclick="getMovies(titles.value),setPage()" id = "submit" ></p>
 
 	<div class = "contain">
 		<p>Genre:</p>
@@ -135,7 +135,7 @@
 </div>
 <table id = "movies"> 
 			</table>
-<div style="text-align: center; " id = "button" hidden>
+<div style="text-align: center; " id = "button" >
 <input type="submit" class="n" value="Back" onclick="next(titles.value)">
 <input type="submit" class="n" value="Next" onclick="next(titles.value)">
 
